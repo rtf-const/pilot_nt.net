@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PilotNtSharp", "PilotNtSharp\PilotNtSharp.csproj", "{C4501EBF-5986-4B63-92B8-F78B9BC788A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PilotNtSharp.Test", "PilotNtSharp.Test\PilotNtSharp.Test.csproj", "{67FF6FF4-3E8F-4C1A-82DA-EEC617658104}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C4501EBF-5986-4B63-92B8-F78B9BC788A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4501EBF-5986-4B63-92B8-F78B9BC788A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4501EBF-5986-4B63-92B8-F78B9BC788A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67FF6FF4-3E8F-4C1A-82DA-EEC617658104}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67FF6FF4-3E8F-4C1A-82DA-EEC617658104}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67FF6FF4-3E8F-4C1A-82DA-EEC617658104}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67FF6FF4-3E8F-4C1A-82DA-EEC617658104}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
