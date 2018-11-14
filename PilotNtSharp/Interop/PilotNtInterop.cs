@@ -8,6 +8,9 @@ namespace PilotNtSharp.Interop
         Payment = 1,
         Return = 3,
         CloseDay = 7,
+
+        StatShort = 1,
+        StatDetailed = 0,
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -69,6 +72,9 @@ namespace PilotNtSharp.Interop
 
         [DllImport("pilot_nt.dll", EntryPoint = "_close_day", CallingConvention = CallingConvention.Cdecl)]
         public static extern int CloseDay(ref AuthAnswer ans);
+
+        [DllImport("pilot_nt.dll", EntryPoint = "_get_statistics", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int GetStatistics(ref AuthAnswer ans);
 
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
         public static extern IntPtr GlobalFree(IntPtr handle);

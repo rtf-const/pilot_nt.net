@@ -100,10 +100,20 @@ namespace PilotNtSharp
             {
                 TType = PilotNtTransType.CloseDay,
             };
-            int res = PilotNtInterop.CloseDay(ref ans);
-            var encoding = Encoding.GetEncoding(1251);
-            var code = int.Parse(encoding.GetString(ans.Rcode).TrimEnd('\0'));
-            var message = encoding.GetString(ans.AMessage).TrimEnd('\0');
+            PilotNtInterop.CloseDay(ref ans);            
+            return new CloseShiftResponse
+            {
+                Checks = ReadCheck(ans.Check),
+            };
+        }
+
+        public CloseShiftResponse GetStatistics(bool detailed=false)
+        {
+            var ans = new AuthAnswer
+            {
+                TType = detailed ? PilotNtTransType.StatDetailed : PilotNtTransType.StatShort,
+            };
+            PilotNtInterop.GetStatistics(ref ans);            
             return new CloseShiftResponse
             {
                 Checks = ReadCheck(ans.Check),
