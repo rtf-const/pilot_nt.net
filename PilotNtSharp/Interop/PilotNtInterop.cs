@@ -70,6 +70,9 @@ namespace PilotNtSharp.Interop
         [DllImport("pilot_nt.dll", EntryPoint = "_CommitTrx", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern int CommitTrx(uint dwAmount, byte[] pAuthCode);
 
+        [DllImport("pilot_nt.dll", EntryPoint = "_RollbackTrx", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int RollbackTrx(uint dwAmount, byte[] pAuthCode);
+
         [DllImport("pilot_nt.dll", EntryPoint = "_close_day", CallingConvention = CallingConvention.Cdecl)]
         public static extern int CloseDay(ref AuthAnswer ans);
 

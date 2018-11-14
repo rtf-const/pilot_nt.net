@@ -94,6 +94,21 @@ namespace PilotNtSharp
             return resp == 0;
         }
 
+        /// <summary>
+        /// Отмена транзакции
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <param name="authCode"></param>
+        /// <returns></returns>
+        public bool RollbackTransaction(decimal amount, string authCode)
+        {
+            uint iAmount = (uint)(amount * 100);
+            var encoding = Encoding.GetEncoding(1251);
+            var bAuthCode = encoding.GetBytes(authCode);
+            int resp = PilotNtInterop.RollbackTrx(iAmount, bAuthCode);
+            return resp == 0;
+        }
+
         public CloseShiftResponse CloseShift()
         {
             var ans = new AuthAnswer
