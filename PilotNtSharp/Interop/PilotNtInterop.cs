@@ -79,6 +79,9 @@ namespace PilotNtSharp.Interop
         [DllImport("pilot_nt.dll", EntryPoint = "_get_statistics", CallingConvention = CallingConvention.Cdecl)]
         public static extern int GetStatistics(ref AuthAnswer ans);
 
+        [DllImport("pilot_nt.dll", EntryPoint = "_ServiceMenu", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int ServiceMenu(ref AuthAnswer ans);
+
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
         public static extern IntPtr GlobalFree(IntPtr handle);
     }

@@ -135,6 +135,18 @@ namespace PilotNtSharp
             };
         }
 
+        public CloseShiftResponse ServiceMenu()
+        {
+            var ans = new AuthAnswer
+            {                
+            };
+            PilotNtInterop.ServiceMenu(ref ans);
+            return new CloseShiftResponse
+            {
+                Checks = ReadCheck(ans.Check),
+            };
+        }
+
         private static string[] ReadCheck(IntPtr checkPtr)
         {
             if (checkPtr == IntPtr.Zero)
