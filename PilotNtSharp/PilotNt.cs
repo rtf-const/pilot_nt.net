@@ -10,6 +10,8 @@ namespace PilotNtSharp
     /// </summary>
     public class PilotNt
     {
+        public string CheckSeparator { get; set; } = "~S\x01\r\n";
+
         /// <summary>
         /// Проведение оплаты. 
         /// Для завершения транзакции необходимо вызвать метод CommiTransaction
@@ -147,7 +149,7 @@ namespace PilotNtSharp
             };
         }
 
-        private static string[] ReadCheck(IntPtr checkPtr)
+        private string[] ReadCheck(IntPtr checkPtr)
         {
             if (checkPtr == IntPtr.Zero)
                 return null;
@@ -157,10 +159,9 @@ namespace PilotNtSharp
 
             if (string.IsNullOrEmpty(check))
                 return null;
+            
 
-            const string separator = "~S\x01\r\n";
-
-            return check.Split(new [] {separator}, StringSplitOptions.RemoveEmptyEntries);
+            return check.Split(new [] { CheckSeparator }, StringSplitOptions.RemoveEmptyEntries);
         }
     }
 }
