@@ -18,5 +18,10 @@
         /// Код авторизации, используемый для комита или отката транзакции
         /// </summary>
         public string AuthCode { get; internal set; }
+
+        /// <summary>
+        /// Хеш SHA1 от номера карты
+        /// </summary>
+        public string CardHash { get; internal set; }
     }
 }

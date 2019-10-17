@@ -22,12 +22,12 @@ namespace PilotNtSharp
         public PaymentResponse Payment(decimal amount, bool suspendTransaction=true)
         {
             uint iAmount = (uint) (amount * 100);
-            var ans = new AuthAnswer7
+            var ans = new AuthAnswer9
             {
                 TType = PilotNtTransType.Payment,
                 Amount = iAmount,
             };
-            PilotNtInterop.CardAuthorize7(null, ref ans);
+            PilotNtInterop.CardAuthorize9(null, ref ans);
 
             var check = ReadCheck(ans.Check);
             var encoding = Encoding.GetEncoding(1251);
@@ -41,6 +41,7 @@ namespace PilotNtSharp
                 ErrorMessage = message,
                 AuthCode = authCode,
                 Checks = check,
+                CardHash = ans.Hash,
             };
 
             if (response.IsSuccess && suspendTransaction)
@@ -59,12 +60,12 @@ namespace PilotNtSharp
         public PaymentResponse Return(decimal amount)
         {
             uint iAmount = (uint)(amount * 100);
-            var ans = new AuthAnswer7
+            var ans = new AuthAnswer9
             {
                 TType = PilotNtTransType.Return,
                 Amount = iAmount,
             };
-            PilotNtInterop.CardAuthorize7(null, ref ans);
+            PilotNtInterop.CardAuthorize9(null, ref ans);
 
             var check = ReadCheck(ans.Check);
             var encoding = Encoding.GetEncoding(1251);

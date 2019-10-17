@@ -33,7 +33,7 @@ namespace PilotNtSharp.Interop
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal struct AuthAnswer7
+    internal struct AuthAnswer9
     {
         public PilotNtTransType TType;                   //вход: тип транзакции
 
@@ -50,19 +50,24 @@ namespace PilotNtSharp.Interop
         public IntPtr Check;         //выход: образ чека, должен освобождаться
                                      //       GlobalFree в вызывающей программе
 
+        // Конец структуры AuthAnswer
+
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 7)]
         public byte[] AuthCode; //выход: код авторизации
 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 25)]
-        public byte[] CardID;   //выход: номер карты
+        public byte[] CardID;   //выход: номер карты        
 
         public int SberOwnCard;   //выход: флаг принадлежности карты Сбербанку 
+
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 40)]
+        public string Hash;
     }
 
     internal static class PilotNtInterop
     {
-        [DllImport("pilot_nt.dll", EntryPoint = "_card_authorize7", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern int CardAuthorize7(byte[] rack2, ref AuthAnswer7 ans);
+        [DllImport("pilot_nt.dll", EntryPoint = "_card_authorize9", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern int CardAuthorize9(byte[] rack2, ref AuthAnswer9 ans);
 
         [DllImport("pilot_nt.dll", EntryPoint = "_SuspendTrx", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern int SuspendTrx(uint dwAmount, byte[] pAuthCode);

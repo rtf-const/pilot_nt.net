@@ -24,6 +24,8 @@ namespace PilotNtSharp.Test
                 return;
             }
 
+            Console.WriteLine(paymentRes.CardHash);
+
             if (paymentRes.Checks != null)
             {
                 foreach (var check in paymentRes.Checks)
